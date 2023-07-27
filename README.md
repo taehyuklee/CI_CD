@@ -1,7 +1,8 @@
 # Linux
 2022년에 공부했던 리눅스 우분투 관련 내용들에 대해 정리해 놓은 디렉토리입니다. (IT배울학 영상을 보고 배움)
 
-##Ubuntu (Linux)
+
+## Ubuntu (Linux)
 
 **[Prompt]**
 
