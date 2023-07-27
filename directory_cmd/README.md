@@ -16,8 +16,7 @@ cp -r test2 copy
  
 
 **`절대 경로`** : **최상위 디렉토리인 /** 에서부터 특정 파일 또는 디렉토리의 경로를 모두 입력
-
-![최상위.JPG](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4db29cfa-5ece-4f35-93fd-32dd6f8728b6/%EC%B5%9C%EC%83%81%EC%9C%84.jpg)
+![image](https://github.com/taehyuklee/Linux/assets/89365465/08a9bbc9-9419-4784-abed-a64e2e806e0b)
 
 → 위 사진이 최상위 root인데 여기서부터 모든 경로를 다 적어줘야 한다. (윈도우의 C, D드라이브와 같이 파티션이 나뉘는거와 다르게 **리눅스는 최상위가 하나**)
 
