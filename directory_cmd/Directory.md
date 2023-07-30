@@ -21,8 +21,7 @@ cp -r test2 copy
 → 위 사진이 최상위 root인데 여기서부터 모든 경로를 다 적어줘야 한다. (윈도우의 C, D드라이브와 같이 파티션이 나뉘는거와 다르게 **리눅스는 최상위가 하나**)
 
 **`상대 경로`** : 현재 작업 디렉토리를 기준으로 특정 파일 또는 디렉토리의 경로를 입력.
-
-![gggg.JPG](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6be1ee6b-e372-4cfa-b698-8c925e824d96/gggg.jpg)
+![gggg JPG](https://github.com/taehyuklee/Linux/assets/89365465/f5f64edf-68a7-445a-adc5-9e58caf1b0e6)
 
 </aside>
 
