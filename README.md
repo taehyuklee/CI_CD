@@ -38,3 +38,6 @@ ls --all (단어 단위)
 /dev (device약자)
 
 /etc (**etcetera 약자)**
+
+
+## Jenkins
