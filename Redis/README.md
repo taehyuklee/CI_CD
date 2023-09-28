@@ -16,7 +16,6 @@ ubuntu  **`/etc/redis/redis.config`**
 CentOS **`/etc/redis.config`**
 
 <br><br/>
-
 once you install redis-server, you'll recognize that ##'redis.config' is belong to redis user. as like below
 
 ```shell
