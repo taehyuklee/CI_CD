@@ -25,3 +25,21 @@ If you install using apt repository, Nginx will be managed by paraent process wh
 
 &nbsp;
 
+4. If you want to SSL protocol (https) you need to buy a domain (such as xxxxx.com) and configure like this
+```bat
+server{
+        listen 9001 ssl;
+
+        server_name {your domain};
+
+        ssl_certificate /etc/letsencrypt/live/{your_domain}/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/{your_domain}/privkey.pem;
+
+        location /{
+                #redis
+                proxy_pass http://172.30.1.71:10000;
+        }
+
+}
+```
+
