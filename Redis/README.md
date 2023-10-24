@@ -30,7 +30,7 @@ this is because **'redis:x:132:139::/var/lib/redis:/usr/sbin/nologin', shell (ba
 after switching your user, you can access redis.config. and you can find part of content of configuration as below. 
 
 ```shell
-#Redis access IP
+#Redis access IP - if you want to expose your redis server to public net, set 0.0.0.0 in [IP] 
 bind [IP]
 
 #Redis access Port
@@ -44,4 +44,5 @@ loglevel notice
 
 logfile /var/log/redis/redis-server.log
 ```
+
 
