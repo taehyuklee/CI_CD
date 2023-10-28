@@ -2,6 +2,6 @@
 1. Container란?
 
 
-#Docker 관련 Network 
+#Docker 관련 Network (가상화 및 원리)
 
 
