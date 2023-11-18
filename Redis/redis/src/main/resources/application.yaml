@@ -1,0 +1,24 @@
+server:
+  port: 9002
+  servlet:
+    session:
+      timeout: 60
+
+spring:
+  redis:
+    lettuce:
+      pool:
+        max-active: 5 # pool에 할당될 수 있는 커넥션 최대수
+        max-idle: 5 # pool의 'idle' 커넥션 최대수
+        min-idle: 2
+    host: www.taylee.link
+    port: 53994
+    password: new1234!
+  session:
+    store-type: redis
+    redis:
+      namespace: spring:session:admin
+      flush-mode: on_save
+      cleanup-cron: 0/5 * * * * *
+
+

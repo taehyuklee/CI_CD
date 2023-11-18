@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.16'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'spring'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.session:spring-session-data-redis' //spring-session을 이용하기 위함.
+	implementation 'org.springframework.boot:spring-boot-starter-cache' //spring cache를 사용하기 위함.
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310' //LocalDateTime을 parsing할수 있게 해줌.
+
+	implementation 'org.springframework.boot:spring-boot-starter-aop' //aop 사용
+
+	implementation 'org.redisson:redisson-spring-boot-starter:3.16.3' //redisson client 추가
+
+
+	implementation 'org.apache.httpcomponents:httpcore:4.4.15'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
