@@ -10,3 +10,8 @@
 &nbsp; &nbsp;
 
 This repository is dedicated to the study of architecture. I have set up servers, as shown in the pictures on the README page, using three home servers. This means I have personally configured the network and Linux environment, and I have also directly installed all the necessary middleware and SW.
+
+
+# K8s Architecture
+
+## case of k8s
