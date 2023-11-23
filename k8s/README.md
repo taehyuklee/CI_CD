@@ -72,3 +72,27 @@ sudo sysctl --system
 ```
 
 ## 3 Step
+
+
+---
+k8s가 docker를 지원하는 마지막 버전은 1.21버전이다. 이 버전에 관련하여 설치했을때는 다음과 같다.
+
+Docker 특정 버전 설치
+``` shell
+sudo apt-get install docker-ce=5:20.10.17~3-0~ubuntu-jammy docker-ce-cli=5:20.10.17~3-0~ubuntu-jammy containerd.io docker-compose-plugin
+```
+
+k8s - 1.21.7버전 설치
+``` shell
+sudo apt-get install -y kubelet=1.21.7-00 kubeadm=1.21.7-00 kubectl=1.21.7-00
+```
+
+kubeamin init 특정 버전
+```shell
+kubeadm init --kubernetes-version=v1.21.7
+```
+
+CNI 설치
+```shell
+kubectl apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
+```
