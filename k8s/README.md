@@ -1,4 +1,7 @@
-Kubernetess 설치 및 설정입니다. <br>
+## Kubernetess 설치 및 설정입니다. <br>
+
+- 2023-11월 시점에서 가장 최신 버전은 1.28대 버전이다. 이미 Docker의 지원은 끊기고 Docker를 사용하기 위해서는 containerd.io내부적으로 사용되는 Docker의 최신버전만 사용 가능하다. <br>
+- 여기서는 기존 containerd.io가 사용되지 않는 Docker의 마지막 버전을 기준으로 쿠버 버전을 맞췄다.
 
  Kubernetess의 kubulet의 경우 일반적으로 OS에서 지원하는 Swap memory를 지원하지 않기때문에, swap은 off시켜줘야 한다.<br>
 
@@ -78,10 +81,43 @@ sudo sysctl --system
 k8s가 docker를 지원하는 마지막 버전은 1.21버전이다. 이 버전에 관련하여 설치했을때는 다음과 같다.
 
 Docker 특정 버전 설치
+
+- Docker 인증서
+``` shell
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
+#위의 명령어 또는 아래 두 개
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+```
+
+- Docker의 공식 GPG키를 추가. 
+```shell
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg #권한 바꿔주기
+
+#Docker의 공식 apt 저장소 추가
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update #다시 update했을때 HIT하지 않으면 문제를 해결하고 넘어가야 한다.
+```
+
+- Docker 특정 버전 설치
 ``` shell
 sudo apt-get install docker-ce=5:20.10.17~3-0~ubuntu-jammy docker-ce-cli=5:20.10.17~3-0~ubuntu-jammy containerd.io docker-compose-plugin
 ```
 
+- Docker 권한 주기
+``` shell
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+
+#/var/run/docker.sock에 권한 부여해야 한다 
+sudo chmod 666 /var/run/docker.sock # 이 명령어 필요
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 k8s - 1.21.7버전 설치
 ``` shell
 sudo apt-get install -y kubelet=1.21.7-00 kubeadm=1.21.7-00 kubectl=1.21.7-00
