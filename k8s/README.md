@@ -26,7 +26,7 @@ NAME      TYPE      SIZE USED PRIO
 - 기존에 내가 ubuntu를 설치했을때 위와 같이 Swap 메모리를 잡아놨다. 
 
 
-## 1 Step (Swap memory 해제)
+## Step 1 (Swap memory 해제)
 sed는 스트림 에디터(stream editor) 
 
 ``` shell
@@ -37,7 +37,7 @@ swapoff -a && sed -i '/swap/s/^/#/' /etc/fstab
 
 ```
 
-## 2 Step (Net-filter 수정 - iptables 설정)
+## Step 2 (Net-filter 수정 - iptables 설정)
 ``` shell
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 br_netfilter
@@ -74,9 +74,9 @@ net.bridge.bridge-nf-call-iptables = 1
 sudo sysctl --system
 ```
 
-## 3 Step
+## Step 3 - Docekr 및 Kubernetes 설치
 
-
+### Step 3.1) 특정 버전의 Docker 설치
 ---
 k8s가 docker를 지원하는 마지막 버전은 1.21버전이다. 이 버전에 관련하여 설치했을때는 다음과 같다.
 
@@ -117,18 +117,35 @@ permission denied while trying to connect to the Docker daemon socket at unix://
 sudo chmod 666 /var/run/docker.sock # 이 명령어 필요
 ```
 
+<br><br>
+
+### Step 3.2) 특정 버전의 Kubernetes 설치
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+k8s 설치를 위해 필요한 GPG(GNU Privacy Guard) Key를 다운로드 하여 시스템의 ```/etc/apt/keyrings``` 밑에 넣어주도록 한다. 
+``` shell
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor | sudo dd status=none of=/etc/apt/keyrings/kubernetes-archive-keyring.gpg
+```
+
+다운받은 GPG를 apt저장소에서 사용하기 위해 다음과 같은 작업을 해준다 
+``` shell
+#쿠버네티스를 설치하기 위해 Kubernetes 저장소를 추가한다.
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+#결과적으로 /etc/apt/sources.list.d 하위에 kubernetes.list 라는 파일이 생길 것이다.
+```
+
 k8s - 1.21.7버전 설치
 ``` shell
 sudo apt-get install -y kubelet=1.21.7-00 kubeadm=1.21.7-00 kubectl=1.21.7-00
 ```
 
-kubeamin init 특정 버전
+kubeamin init 특정 버전 - kubernetes master node를 초기화 한다.
 ```shell
 kubeadm init --kubernetes-version=v1.21.7
 ```
 
-CNI 설치
+CNI 설치 - Weavenet, Calico, Flannel 등 여러개가 3rd party로 들어갈수 있지만, Calico (공식문서 추천)을 사용하였다.
 ```shell
 kubectl apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
 ```
