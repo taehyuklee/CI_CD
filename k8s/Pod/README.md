@@ -19,6 +19,7 @@ kubectl create -f spring.yaml
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/ha/install.yaml
 ```
 * create와 apply의 정확한 차이점에 대해서 알아보자.
+  보통, create는 처음 만들때, apply는 새로 만들거나 업데이트할때 사용하게 된다. 이미 있는 component에 대해 create하게 되면 Already Exists가 뜨게 된다.
 
 
 - pod내에 container가 뜰 것이고 container내부의 log를 보고싶을때 다음과 같이 하면 된다.
