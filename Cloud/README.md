@@ -7,3 +7,7 @@
 ### 2번째 실습문제 
 
 ![image](https://github.com/taehyuklee/InfraArchitecture/assets/89365465/4192d4c2-c972-4659-928b-b44478f34378)
+
+### 3번째 실습문제 (NAT Gateway대신 Bastion서버 구현) 
+
+![image](https://github.com/taehyuklee/InfraArchitecture/assets/89365465/fb8ceea3-3baf-4c49-9d2d-9894194c5c11)
