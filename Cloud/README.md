@@ -11,3 +11,5 @@
 ### 3번째 실습문제 (NAT Gateway대신 Bastion서버 구현) 
 
 ![image](https://github.com/taehyuklee/InfraArchitecture/assets/89365465/fb8ceea3-3baf-4c49-9d2d-9894194c5c11)
+
+위의 문제를 구현할수 있으며 각 개념에 대해 공부한 것을 여기에 넣어볻록 한다.
