@@ -50,8 +50,8 @@ server{
 
 upstream backend{
 
-        server 172.30.1.41:9005;
-        server 172.30.1.26:9005;
+        server {domain1}:{port1};
+        server {domain2}:{port2};
 
 
 }
