@@ -43,3 +43,35 @@ server{
 }
 ```
 
+&nbsp;
+
+4. You can use Nginx as LoadBalancer as below: (round-robin)
+```bat
+
+upstream backend{
+
+        server 172.30.1.41:9005;
+        server 172.30.1.26:9005;
+
+
+}
+
+server {
+        listen 9002 ssl;
+
+        server_name www.taylee.link;
+
+        ssl_certificate *****/fullchain.pem;
+        ssl_certificate_key ****/privkey.pem;
+
+        location / {
+
+                proxy_pass http://backend;
+
+        }
+
+}
+
+
+```
+
